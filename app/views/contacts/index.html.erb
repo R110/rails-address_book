@@ -1,0 +1,5 @@
+<% @contacts.each_with_index do |contact, index| %>
+<h2> <a href="/contact_details/<%=contact.name%>">
+   <%= contact.name %></a> </h2>
+
+<%end%>
