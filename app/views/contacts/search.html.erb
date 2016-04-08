@@ -1,0 +1,12 @@
+<h1> <%= @contact.name %> </h1>
+<hr>
+<h2> <%= @contact.address %> </h2>
+<h2> <%= @contact.email_address %> </h2>
+
+
+
+<% if @contact.favorite_status != "true" %>
+
+<button><a href="/favorite/<%=@contact.name%>"> Add Contact as favorite</a></button>
+
+<%end%>

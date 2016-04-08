@@ -21,6 +21,12 @@
    <input type="email" name="contact[email_address]" id="contact_email">
  </div>
 
+ <div>
+   <label for="contact_favorite_status">Favorite? true/false</label>
+   <input name="contact[favorite_status]" id="contact_favorite_status">
+ </div>
+
+
  <button type="submit">Add this contact</button>
 
  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">

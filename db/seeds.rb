@@ -6,6 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Contact.create(name:"Jed", address:"atlanta", phone_number: "2232323333", email_address:"jed@aol.com")
-Contact.create(name:"Jon", address:"atlanta", phone_number: "2232323333", email_address:"jon@aol.com")
-Contact.create(name:"Jov", address:"atlanta", phone_number: "2232323333", email_address:"jov@aol.com")
+Contact.create(name:"Jed", address:"atlanta", phone_number: "2232323333", email_address:"jed@aol.com", favorite_status: "true")
+Contact.create(name:"Jon", address:"atlanta", phone_number: "2232323333", email_address:"jon@aol.com", favorite_status: "false")
+Contact.create(name:"Jov", address:"atlanta", phone_number: "2232323333", email_address:"jov@aol.com", favorite_status: "true")

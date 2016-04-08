@@ -10,24 +10,19 @@ class ContactsController < ApplicationController
   def create
     #render(:text => params[:contact].inspect)
     phone_valid = params[:contact][:phone_number].match(/^\d{3}\-\d{3}\-\d{4}$/)
-    email_valid = params[:contact][:email].match(/ ^\w+\@\w+\.\w{2,3}$ /)
-
 
     if !phone_valid
-      @error= "Invalid phone number"
-    elsif !email_valid
-      @error= "Invalid email"
-    elsif phone_valid && email_valid
+      redirect_to "/error"
+    else phone_valid
       contact = Contact.new(
         :name => params[:contact][:name],
         :address => params[:contact][:address],
         :phone_number => params[:contact][:phone_number],
-        :email_address => params[:contact][:email_address])
+        :email_address => params[:contact][:email_address],
+        :favorite_status => params[:contact][:favorite_status])
       contact.save
 
     redirect_to("/")
-    else
-      redirect_to("/error")
     end
   end
   def contact_details
@@ -36,5 +31,18 @@ class ContactsController < ApplicationController
   end
   def error
     render "error"
+  end
+  def favorite
+    contact_name = params[:id]
+    contact = Contact.find_by(name: contact_name)
+    contact[:favorite_status] = "true"
+    contact.save
+    redirect_to("/")
+  end
+  def search_contacts
+    letter = params[:search_term]
+    the_contacts = Contact.all
+    letter_contacts = the_contacts.select{|contact| contact.name[0] == letter.upcase}
+    @contacts = letter_contacts
   end
 end
